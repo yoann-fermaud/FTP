@@ -6,8 +6,8 @@
 ```
 sudo apt-get install proftpd-*
 ```
-This command line permits you to install all packages of `proftpd`
-* Then enter the following command to update your packages and software
+This command line permits you to install all packages of `proftpd`.
+* Then enter the following command to update your packages and software :
 ```
 sudo apt-get update && sudo apt-get upgrade
 ```
@@ -44,4 +44,8 @@ sudo apt-get update && sudo apt-get upgrade
      </Limit>
    </Directory>
  </Anonymous>
+```
+* Then enter the following command once the configuration has been modified in order to restart the server modifications :
+```
+sudo service proftpd restart
 ```
