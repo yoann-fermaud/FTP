@@ -52,3 +52,30 @@ sudo apt-get update && sudo apt-get upgrade
 sudo service proftpd restart
 ```
 ## To configure `TLS SSL`
+
+* Open your command prompt. 
+* Then enter the following command :
+```
+cd /etc/proftpd/ && sudo mkdir ssl && cd ssl/
+```
+
+```
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:4096 -out proftpd-rsa.pem -keyout proftpd-key.pem
+```
+
+```
+sudo chmod 0600 proftpd-key.pem
+```
+
+```
+TLSEngine on
+TLSLog /var/log/proftpd/tls.log
+TLSProtocol SSLv23
+
+TLSRSACertificateFile /etc/proftpd/ssl/proftpd-rsa.pem
+TLSRSACertificateKeyFile /etc/proftpd/ssl/proftpd-key.pem
+
+TLSOptions NoSessionReuseRequired
+TLSVerifyClient off
+TLSRequired on
+```
