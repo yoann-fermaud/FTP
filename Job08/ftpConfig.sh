@@ -1,10 +1,8 @@
 #!/bin/bash
 
-
-if [ "$whoami" != "root" ]; then
-    echo "Root user required"
-    exit
-fi
+echo "#############################"
+echo "#    Root user required     #"
+echo "#############################"
 
 echo "Option '1' Install and configure ProFTPd"
 echo "Option '2' Uninstall ProFTPd"
@@ -17,8 +15,8 @@ case $option in
     "1")
         apt -y install proftpd-* && apt-get -y update && apt-get -y upgrade
         mv /etc/proftpd/proftpd.conf /etc/proftpd/proftpd_backup.conf
-        mv /etc/proftpd/tls.conf /etc/proftpd/proftpd_backup.conf
-        mv /etc/proftpd/modules.conf /etc/proftpd/proftpd_backup.conf
+        mv /etc/proftpd/tls.conf /etc/proftpd/tls_backup.conf
+        mv /etc/proftpd/modules.conf /etc/proftpd/modules_backup.conf
         
         git clone https://github.com/yoann-fermaud/ftp-config.git
         mv ftp-config/ftp-config-proftpd.conf /etc/proftpd/proftpd.conf
@@ -28,8 +26,8 @@ case $option in
         
         mkdir -p /etc/proftpd/ssl
 	openssl req -x509 -nodes -days 365 -newkey rsa:4096 -out /etc/proftpd/ssl/proftpd-rsa.pem -keyout /etc/proftpd/ssl/proftpd-key.pem
-	-subj "/C=''/ST=''/L=''/O=''/OU=''/CN=''" 
-        #chmod 0600 /etc/proftpd/ssl/proftpd-key.pem
+	#-subj "/C=''/ST=''/L=''/O=''/OU=''/CN=''" 
+        chmod 0600 /etc/proftpd/ssl/proftpd-key.pem
         
         service proftpd restart
         echo "Configuration done !"
