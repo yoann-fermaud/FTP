@@ -12,7 +12,7 @@ read option
 
 case $option in
     "1")
-        apt -y install proftpd-* && apt -y install git && apt-get -y update && apt-get -y upgrade
+        apt-get -y install proftpd-* && apt-get -y install git && apt-get -y update && apt-get -y upgrade
         mv /etc/proftpd/proftpd.conf /etc/proftpd/proftpd_backup.conf
         mv /etc/proftpd/tls.conf /etc/proftpd/tls_backup.conf
         mv /etc/proftpd/modules.conf /etc/proftpd/modules_backup.conf
