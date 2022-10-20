@@ -18,10 +18,10 @@ case $option in
         mv /etc/proftpd/tls.conf /etc/proftpd/tls_backup.conf
         mv /etc/proftpd/modules.conf /etc/proftpd/modules_backup.conf
         
-        git clone https://github.com/yoann-fermaud/ftp-config.git
-        mv ftp-config/ftp-config-proftpd.conf /etc/proftpd/proftpd.conf
-        mv ftp-config/ftp-config-tls.conf /etc/proftpd/tls.conf
-        mv ftp-config/ftp-config-modules.conf /etc/proftpd/modules.conf
+        git clone https://github.com/yoann-fermaud/FTP.git
+        mv FTP/ftp-config/ftp-config-proftpd.conf /etc/proftpd/proftpd.conf
+        mv FTP/ftp-config/ftp-config-tls.conf /etc/proftpd/tls.conf
+        mv FTP/ftp-config/ftp-config-modules.conf /etc/proftpd/modules.conf
         rm -r ftp-config/
         
         mkdir -p /etc/proftpd/ssl
