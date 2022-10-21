@@ -18,7 +18,7 @@ do
     userPasswd="$d$d"
 
     if [ "$a" != "Id" ]; then
-        echo -ne "$userPasswd\n$userPasswd" | adduser "$cleanUserName" && echo -ne "\n"
+        echo -ne "$userPasswd\n$userPasswd" | adduser --force-badname "$cleanUserName" && echo -ne "\n"
         adduser "$cleanUserName" ftpGroup
         
         if [[ "$e" = *"Admin"* ]]; then
